@@ -46,16 +46,6 @@ AESTHETIC_SURVILLENCE_PART1_SIMPLE/
 3. Open `index.html` in a browser, or use the Live Server extension if it is installed.
 4. Test Home -> About -> Services -> Enquiry -> Contact.
 
-## 4. What you should not add for the Part 1 submission
-Do not add finished CSS animations, JavaScript interactions, SEO implementation or external embeds yet. Those are planned for later parts.
-
-## 5. Before submission
-- Fill in your student number and group in the Word proposal.
-- Check that all five pages open.
-- Check that the hero image appears.
-- Keep the ZIP structure unchanged.
-- Push the same Part 1 folder to the lecturer-provided GitHub repository if required.
-
 ## New visual assets
 - `assets/logo.svg` is the project logo and should stay in `assets`.
 - `images/services/` contains the six AI-generated service images used on `services.html`.
