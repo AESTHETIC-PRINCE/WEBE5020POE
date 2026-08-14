@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="800" viewBox="0 0 1000 800">
+<rect width="1000" height="800" fill="#fff"/>
+<style>.box{fill:#f7f7f7;stroke:#111;stroke-width:2}.txt{font-family:Arial,sans-serif;fill:#111;font-size:18px}.gold{stroke:#c79a2b;stroke-width:3;fill:none}</style>
+<rect x="50" y="30" width="900" height="60" class="box"/><text x="75" y="68" class="txt">LOGO / NAME</text><text x="650" y="68" class="txt">HOME | ABOUT | SERVICES | ENQUIRY | CONTACT</text>
+<rect x="50" y="110" width="900" height="250" class="box"/><rect x="80" y="145" width="380" height="180" class="gold"/><text x="270" y="240" text-anchor="middle" class="txt">HERO IMAGE</text><text x="520" y="190" class="txt">MAIN HEADING</text><text x="520" y="225" class="txt">SHORT INTRODUCTION</text><text x="520" y="260" class="txt">PRIMARY LINK / CTA</text>
+<rect x="50" y="385" width="900" height="160" class="box"/><text x="75" y="420" class="txt">CORE SERVICES</text><rect x="75" y="440" width="195" height="75" class="gold"/><rect x="290" y="440" width="195" height="75" class="gold"/><rect x="505" y="440" width="195" height="75" class="gold"/><rect x="720" y="440" width="195" height="75" class="gold"/>
+<text x="172" y="485" text-anchor="middle" class="txt">SERVICE 1</text><text x="387" y="485" text-anchor="middle" class="txt">SERVICE 2</text><text x="602" y="485" text-anchor="middle" class="txt">SERVICE 3</text><text x="817" y="485" text-anchor="middle" class="txt">SERVICE 4</text>
+<rect x="50" y="570" width="900" height="140" class="box"/><text x="75" y="610" class="txt">ABOUT / VALUE STATEMENT</text><text x="75" y="650" class="txt">Brief organisation description and supporting information.</text>
+<rect x="50" y="735" width="900" height="35" class="box"/><text x="500" y="759" text-anchor="middle" class="txt">FOOTER</text>
+</svg>

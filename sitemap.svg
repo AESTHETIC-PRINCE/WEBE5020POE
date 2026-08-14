@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
+<rect width="1000" height="520" fill="#ffffff"/>
+<style>.b{fill:#111;stroke:#c79a2b;stroke-width:2}.t{font-family:Arial,sans-serif;fill:#fff;font-size:20px;font-weight:bold}.s{font-family:Arial,sans-serif;fill:#333;font-size:16px}.l{stroke:#c79a2b;stroke-width:3}</style>
+<rect x="370" y="35" width="260" height="70" rx="10" class="b"/><text x="500" y="78" text-anchor="middle" class="t">HOME</text>
+<line x1="500" y1="105" x2="500" y2="145" class="l"/>
+<line x1="120" y1="145" x2="880" y2="145" class="l"/>
+<line x1="120" y1="145" x2="120" y2="190" class="l"/><line x1="310" y1="145" x2="310" y2="190" class="l"/><line x1="500" y1="145" x2="500" y2="190" class="l"/><line x1="690" y1="145" x2="690" y2="190" class="l"/><line x1="880" y1="145" x2="880" y2="190" class="l"/>
+<g class="b">
+<rect x="45" y="190" width="150" height="65" rx="10"/><rect x="235" y="190" width="150" height="65" rx="10"/><rect x="425" y="190" width="150" height="65" rx="10"/><rect x="615" y="190" width="150" height="65" rx="10"/><rect x="805" y="190" width="150" height="65" rx="10"/>
+</g>
+<text x="120" y="230" text-anchor="middle" class="t">ABOUT</text><text x="310" y="230" text-anchor="middle" class="t">SERVICES</text><text x="500" y="230" text-anchor="middle" class="t">ENQUIRY</text><text x="690" y="230" text-anchor="middle" class="t">CONTACT</text><text x="880" y="230" text-anchor="middle" class="t">OTHER</text>
+<text x="500" y="315" text-anchor="middle" class="s">Part 1 navigation: all five required pages link back to the shared navigation.</text>
+<text x="500" y="350" text-anchor="middle" class="s">The fifth box is shown only to make the hierarchy clear; no extra page is submitted.</text>
+<text x="500" y="410" text-anchor="middle" class="s">Required pages: index.html, about.html, services.html, enquiry.html, contact.html</text>
+</svg>
