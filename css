@@ -1,0 +1,80 @@
+:root {
+  --black: #080808;
+  --panel: #121212;
+  --white: #f7f7f7;
+  --muted: #b6b6b6;
+  --gold: #d8a52e;
+  --gold-light: #f1cf72;
+  --border: rgba(216,165,46,.28);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--white);
+  background: radial-gradient(circle at top, #1b1b1b 0, var(--black) 48%);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+a { color: var(--white); text-decoration: none; }
+a:hover { color: var(--gold-light); }
+.site-header {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(8,8,8,.96);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+.nav-wrap {
+  width: min(1180px, 92%); margin: 0 auto; min-height: 82px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.brand img { width: 220px; height: auto; display: block; }
+.nav { display: flex; flex-wrap: wrap; gap: 8px; }
+.nav a { padding: 10px 14px; border-radius: 999px; font-size: .92rem; }
+.nav a:hover, .nav a[aria-current="page"] { border: 1px solid var(--gold); color: var(--gold-light); }
+main { width: min(1180px, 92%); margin: 0 auto; padding: 42px 0 70px; }
+.hero {
+  display: grid; grid-template-columns: 1.05fr .95fr; gap: 34px; align-items: center;
+  padding: 28px; background: linear-gradient(135deg, #0d0d0d, #151515); border: 1px solid var(--border);
+  border-radius: 22px; overflow: hidden;
+}
+.eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: .2em; font-size: .78rem; }
+h1,h2,h3 { font-family: Georgia, 'Times New Roman', serif; line-height: 1.15; }
+h1 { font-size: clamp(2.4rem, 6vw, 4.8rem); margin: .35rem 0 1rem; }
+h2 { color: var(--gold-light); font-size: clamp(2rem, 4vw, 3rem); }
+h3 { color: var(--white); }
+.gold { color: var(--gold); }
+.hero-image { width: 100%; border-radius: 16px; border: 1px solid var(--border); display:block; }
+.btn {
+  display: inline-block; padding: 12px 18px; margin: 8px 8px 0 0; border-radius: 999px;
+  background: var(--gold); color: #111; font-weight: 700; border: 1px solid var(--gold);
+}
+.btn.alt { background: transparent; color: var(--white); }
+.btn:hover { transform: translateY(-1px); color: #111; }
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 24px; margin-top: 28px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.card { background: #0f0f0f; border: 1px solid var(--border); border-radius: 16px; padding: 18px; }
+.card img { width: 100%; height: 150px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); }
+.service-row { display:grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items:center; margin: 22px 0; }
+.service-row:nth-child(even) .service-copy { order: 2; }
+.service-row:nth-child(even) .service-image { order: 1; }
+.service-image { width:100%; border-radius:16px; border:1px solid var(--border); }
+.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:22px; }
+.stat { padding:18px; border:1px solid var(--border); border-radius:14px; text-align:center; background:#0d0d0d; }
+.stat strong { display:block; color:var(--gold-light); font-size:1.6rem; font-family: Georgia,serif; }
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+label { display:block; margin-bottom:6px; color:var(--gold-light); }
+input,select,textarea { width:100%; padding:12px; border-radius:10px; border:1px solid #3a3a3a; background:#0b0b0b; color:var(--white); }
+textarea { min-height:140px; resize:vertical; }
+.full { grid-column:1/-1; }
+.site-footer { border-top:1px solid var(--border); padding:28px 0; color:var(--muted); }
+.footer-inner { width:min(1180px,92%); margin:0 auto; }
+.note { color: var(--muted); font-size:.95rem; }
+@media (max-width: 850px) {
+  .nav-wrap { flex-direction: column; justify-content:center; padding:14px 0; }
+  .brand img { width: 195px; }
+  .hero, .service-row, .form-grid { grid-template-columns: 1fr; }
+  .service-row:nth-child(even) .service-copy, .service-row:nth-child(even) .service-image { order: initial; }
+  .grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns:1fr 1fr; }
+}
