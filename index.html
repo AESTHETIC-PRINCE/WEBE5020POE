@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<!-- ================= SITE HEADER =================
+     Fixed/sticky header used identically on every page: logo (brand link
+     back to Home), then the main nav. aria-current="page" is set by hand
+     on whichever link matches the current page, and css/style.css styles
+     that attribute directly instead of relying on JavaScript. -->
 <header class="site-header">
   <div class="nav-wrap">
     <a class="brand" href="index.html" aria-label="Aesthetic Survillence home"><img src="assets/logo.svg" alt="Aesthetic Survillence logo"></a>
@@ -19,21 +25,39 @@
     </nav>
   </div>
 </header>
+
 <main>
-<section class="hero">
-  <div>
-    <div class="eyebrow">Protecting what matters</div>
-    <h1>Security <span class="gold">Redefined.</span></h1>
-    <p>Aesthetic Survillence is a proposed premium security business for private clients, businesses and high-profile individuals, combining trained personnel with modern surveillance technology.</p>
-    <a class="btn" href="services.html">Our Services →</a><a class="btn alt" href="enquiry.html">Request an Enquiry</a>
-    <div class="stats">
-      <div class="stat"><strong>24/7</strong>Protection</div><div class="stat"><strong>100+</strong>Target clients</div><div class="stat"><strong>50+</strong>Planned drone missions</div><div class="stat"><strong>5★</strong>Service aim</div>
+
+  <!-- ================= HERO ==================
+       Two-column intro: left side is the value proposition + call-to-
+       action buttons + quick stats; right side is the hero photo.
+       Stacks to one column on tablet/mobile (see style.css §Responsive). -->
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Protecting what matters</div>
+      <h1>Security <span class="gold">Redefined.</span></h1>
+      <p>Aesthetic Survillence is a proposed premium security business for private clients, businesses and high-profile individuals, combining trained personnel with modern surveillance technology.</p>
+      <a class="btn" href="services.html">Our Services →</a><a class="btn alt" href="enquiry.html">Request an Enquiry</a>
+      <!-- Quick trust stats — purely decorative/informational, no logic needed -->
+      <div class="stats">
+        <div class="stat"><strong>24/7</strong>Protection</div><div class="stat"><strong>100+</strong>Target clients</div><div class="stat"><strong>50+</strong>Planned drone missions</div><div class="stat"><strong>5★</strong>Service aim</div>
+      </div>
     </div>
-  </div>
-  <div><img class="hero-image" src="images/hero-ai-generated.png" alt="AI-generated luxury security vehicle and surveillance drone"></div>
-</section>
-<section class="panel"><div class="eyebrow">Why choose us</div><h2>Professional. Discreet. Modern.</h2><p>Our project concept focuses on dependable security, polished presentation and clear communication. The website will use a simple luxury style that is easy for clients to understand and easy for a student developer to maintain.</p></section>
+    <div><img class="hero-image" src="images/hero-ai-generated.png" alt="AI-generated luxury security vehicle and surveillance drone"></div>
+  </section>
+
+  <!-- ============ WHY CHOOSE US (.panel) ============
+       Reusable single-column content block — the same .panel class is
+       reused on about.html, services.html, enquiry.html and contact.html
+       for any full-width text section. -->
+  <section class="panel"><div class="eyebrow">Why choose us</div><h2>Professional. Discreet. Modern.</h2><p>Our project concept focuses on dependable security, polished presentation and clear communication. The website will use a simple luxury style that is easy for clients to understand and easy for a student developer to maintain.</p></section>
+
 </main>
+
+<!-- ================= SITE FOOTER =================
+     Same footer markup repeated on every page for a consistent brand
+     sign-off; update the year/founder text here and copy to the other
+     four pages if it ever changes. -->
 <footer class="site-footer"><div class="footer-inner"><p>© 2026 Aesthetic Survillence · Founder: Trevor Makhubela · Protection • Discretion • Trust</p></div></footer>
 </body>
 </html>
