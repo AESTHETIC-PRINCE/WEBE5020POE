@@ -137,6 +137,11 @@ left as-is — no changes needed there.
   image sizing at each (full detail in §4 above).
 - No HTML structure, classes, or ids were changed — only comments were
   added and `css/style.css` was populated.
+- Added a Google Maps embed (Embed API, no key required) to `contact.html`:
+  one larger map for the head office and a smaller map inside each of the
+  three location cards. Styled via a new `.map-embed` / `.map-embed--small`
+  class in `style.css` (desaturated to match the black/gold theme, sharpens
+  on hover/focus, shrinks height on mobile).
 
 ### Part 1 — [previous submission]
 - Initial HTML structure created for Home, About, Services, Enquiry and
@@ -155,6 +160,8 @@ left as-is — no changes needed there.
   `clamp()`, `aspect-ratio`, `object-fit`, `conic-gradient()` and the
   `prefers-reduced-motion` media feature.
   `https://developer.mozilla.org/en-US/docs/Web/CSS`
+- **Maps:** Google Maps Embed API (basic `?output=embed` query form, no API
+  key required), used on `contact.html`. `https://www.google.com/maps`
 - **Hero and service images:** AI-generated for this academic project (see
   Part 1 documentation in `docs/` for the specific tool and prompts used).
 - Add any further sources used while researching real security-industry
