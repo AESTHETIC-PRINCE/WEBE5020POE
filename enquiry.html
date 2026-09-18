@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<!-- Site-wide header/nav — identical block on every page -->
 <header class="site-header">
   <div class="nav-wrap">
     <a class="brand" href="index.html" aria-label="Aesthetic Survillence home"><img src="assets/logo.svg" alt="Aesthetic Survillence logo"></a>
@@ -19,16 +21,26 @@
     </nav>
   </div>
 </header>
+
 <main>
-<section class="panel"><div class="eyebrow">Enquiry</div><h2>Tell us what you need protected.</h2><p class="note">This is a Part 1 HTML form prototype; it is not connected to a live database.</p><form action="#" method="post" class="form-grid">
-  <div><label for="name">Full name</label><input type="text" id="name" name="name" required></div>
-  <div><label for="email">Email address</label><input type="email" id="email" name="email" required></div>
-  <div><label for="phone">Phone number</label><input type="tel" id="phone" name="phone"></div>
-  <div><label for="service">Service required</label><select id="service" name="service"><option>Drone surveillance</option><option>VIP / executive protection</option><option>Secure transport</option><option>Armed response</option><option>Site security</option><option>Security consultation</option></select></div>
-  <div class="full"><label for="message">Enquiry details</label><textarea id="message" name="message"></textarea></div>
-  <div class="full"><button class="btn" type="submit">Submit Enquiry</button></div>
-</form></section>
+
+  <!-- Enquiry form: .form-grid lays fields out two-per-row (one column on
+       mobile). "name"/"email" carry the required attribute for basic
+       HTML5 validation; the form does not submit anywhere yet — action="#"
+       is a Part 1 placeholder, real submission logic is a Part 3 task. -->
+  <section class="panel"><div class="eyebrow">Enquiry</div><h2>Tell us what you need protected.</h2><p class="note">This is a Part 1 HTML form prototype; it is not connected to a live database.</p><form action="#" method="post" class="form-grid">
+    <div><label for="name">Full name</label><input type="text" id="name" name="name" required></div>
+    <div><label for="email">Email address</label><input type="email" id="email" name="email" required></div>
+    <div><label for="phone">Phone number</label><input type="tel" id="phone" name="phone"></div>
+    <div><label for="service">Service required</label><select id="service" name="service"><option>Drone surveillance</option><option>VIP / executive protection</option><option>Secure transport</option><option>Armed response</option><option>Site security</option><option>Security consultation</option></select></div>
+    <!-- .full spans both grid columns — used for the textarea and submit button -->
+    <div class="full"><label for="message">Enquiry details</label><textarea id="message" name="message"></textarea></div>
+    <div class="full"><button class="btn" type="submit">Submit Enquiry</button></div>
+  </form></section>
+
 </main>
+
+<!-- Site-wide footer — identical on every page -->
 <footer class="site-footer"><div class="footer-inner"><p>© 2026 Aesthetic Survillence · Founder: Trevor Makhubela · Protection • Discretion • Trust</p></div></footer>
 </body>
 </html>
