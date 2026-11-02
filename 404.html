@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ===== SEO: title, description and keywords are unique on every page ===== -->
+  <title>Page Not Found | Aesthetic Surveillance</title>
+  <meta name="description" content="The page you were looking for could not be found. Return to the Aesthetic Surveillance home page.">
+  <meta name="keywords" content="page not found">
+  <meta name="author" content="Trevor Makhubela">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Open Graph / Twitter: how the page looks when shared on social media -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aesthetic Surveillance">
+  <meta property="og:locale" content="en_ZA">
+  <meta property="og:title" content="Page Not Found | Aesthetic Surveillance">
+  <meta property="og:description" content="The page you were looking for could not be found. Return to the Aesthetic Surveillance home page.">
+  <meta property="og:url" content="https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/404.html">
+  <meta property="og:image" content="https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/images/og-aesthetic-surveillance-share.jpg">
+  <meta property="og:image:alt" content="Security officer, drone and armoured vehicle outside a luxury estate at night">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+
+  <!-- Mark the page as JS-enabled early so CSS can hide things JS will reveal (no flash) -->
+  <script>document.documentElement.className += ' js';</script>
+
+  <!-- Page speed: connect to the font host early, load fonts with display=swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ================= SITE HEADER =================
+     Same on every page. The nav marks the current page with aria-current="page"
+     (styled in css/style.css). On phones the menu collapses behind the Menu
+     button, controlled by js/script.js (section 1). -->
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html" aria-label="Aesthetic Surveillance home"><img src="assets/logo.svg" alt="Aesthetic Surveillance logo" width="360" height="90"></a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false"><span class="nav-toggle-bars" aria-hidden="true"></span><span>Menu</span></button>
+    <nav class="nav" id="primary-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="enquiry.html">Enquiry</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="panel center">
+    <div class="eyebrow">Error 404</div>
+    <h1 class="page-title">This page could not be found.</h1>
+    <p>The link may be broken or the page may have moved. Try one of these instead:</p>
+    <a class="btn" href="index.html">Home</a><a class="btn alt" href="services.html">Services</a><a class="btn alt" href="contact.html">Contact</a>
+  </section>
+</main>
+
+<!-- ================= SITE FOOTER =================
+     Footer links add extra internal linking between all pages (good for SEO). -->
+<footer class="site-footer"><div class="footer-inner">
+  <nav class="footer-nav" aria-label="Footer navigation">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="enquiry.html">Enquiry</a><a href="contact.html">Contact</a>
+  </nav>
+  <p>&copy; 2026 Aesthetic Surveillance &middot; Founder: Trevor Makhubela &middot; Protection &bull; Discretion &bull; Trust</p>
+</div></footer>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
