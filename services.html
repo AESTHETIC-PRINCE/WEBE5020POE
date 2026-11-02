@@ -1,47 +1,223 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services | Aesthetic Survillence</title>
+
+  <!-- ===== SEO: title, description and keywords are unique on every page ===== -->
+  <title>Drone, VIP &amp; Armed Response | Aesthetic Surveillance</title>
+  <meta name="description" content="Explore drone surveillance, secure transport, VIP protection, armed response, site security and consulting. Search, compare and request a quote.">
+  <meta name="keywords" content="drone surveillance services, secure transport South Africa, VIP and executive protection, armed response, site security, security consultation, security services Johannesburg">
+  <meta name="author" content="Trevor Makhubela">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/services.html">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Open Graph / Twitter: how the page looks when shared on social media -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aesthetic Surveillance">
+  <meta property="og:locale" content="en_ZA">
+  <meta property="og:title" content="Drone, VIP &amp; Armed Response | Aesthetic Surveillance">
+  <meta property="og:description" content="Explore drone surveillance, secure transport, VIP protection, armed response, site security and consulting. Search, compare and request a quote.">
+  <meta property="og:url" content="https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/services.html">
+  <meta property="og:image" content="https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/images/og-aesthetic-surveillance-share.jpg">
+  <meta property="og:image:alt" content="Security officer, drone and armoured vehicle outside a luxury estate at night">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+
+  <!-- Mark the page as JS-enabled early so CSS can hide things JS will reveal (no flash) -->
+  <script>document.documentElement.className += ' js';</script>
+
+  <!-- Page speed: connect to the font host early, load fonts with display=swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- Site-wide header/nav — identical block on every page -->
+<!-- ================= SITE HEADER =================
+     Same on every page. The nav marks the current page with aria-current="page"
+     (styled in css/style.css). On phones the menu collapses behind the Menu
+     button, controlled by js/script.js (section 1). -->
 <header class="site-header">
   <div class="nav-wrap">
-    <a class="brand" href="index.html" aria-label="Aesthetic Survillence home"><img src="assets/logo.svg" alt="Aesthetic Survillence logo"></a>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" >Home</a>
-      <a href="about.html" >About</a>
+    <a class="brand" href="index.html" aria-label="Aesthetic Surveillance home"><img src="assets/logo.svg" alt="Aesthetic Surveillance logo" width="360" height="90"></a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false"><span class="nav-toggle-bars" aria-hidden="true"></span><span>Menu</span></button>
+    <nav class="nav" id="primary-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
       <a href="services.html" aria-current="page">Services</a>
-      <a href="enquiry.html" >Enquiry</a>
-      <a href="contact.html" >Contact</a>
+      <a href="enquiry.html">Enquiry</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <!-- Intro panel for the services page -->
-  <section class="panel"><div class="eyebrow">Our services</div><h2>Professional security solutions.</h2><p>These proposed services form the Part 1 service offering. Each image below is AI-generated content prepared for this academic website concept.</p></section>
-
-  <!-- Six .service-row items, one per service. Each row is a flex pair of
-       text (.service-copy) + image (.service-image); style.css alternates
-       the image side left/right on desktop and stacks both on mobile. -->
-  <section>
-    <article class="service-row"><div class="service-copy"><h3>1. Drone Surveillance</h3><p>Aerial monitoring for sites, events and perimeter observation.</p></div><img class="service-image" src="images/services/drone-surveillance.png" alt="AI-generated drone surveillance image"></article>
-    <article class="service-row"><div class="service-copy"><h3>2. Secure Transport</h3><p>Security-focused transport planning for clients who require safe and discreet travel arrangements.</p></div><img class="service-image" src="images/services/secure-transport.png" alt="AI-generated secure transport image"></article>
-    <article class="service-row"><div class="service-copy"><h3>3. VIP &amp; Executive Protection</h3><p>Discreet personal security planning and protective support for high-profile and private clients.</p></div><img class="service-image" src="images/services/vip-protection.png" alt="AI-generated VIP protection image"></article>
-    <article class="service-row"><div class="service-copy"><h3>4. Armed Response</h3><p>Rapid-response security support designed around responsible planning and client safety.</p></div><img class="service-image" src="images/services/armed-response.png" alt="AI-generated armed response image"></article>
-    <article class="service-row"><div class="service-copy"><h3>5. Site Security</h3><p>Security planning and monitoring for homes, businesses, venues and controlled sites.</p></div><img class="service-image" src="images/services/site-security.png" alt="AI-generated site security image"></article>
-    <article class="service-row"><div class="service-copy"><h3>6. Security Consultation</h3><p>Basic risk identification and recommendations to help clients plan appropriate security measures.</p></div><img class="service-image" src="images/services/security-consulting.png" alt="AI-generated security consulting image"></article>
+  <section class="panel">
+    <div class="eyebrow">Our services</div>
+    <h1 class="page-title">Professional security solutions.</h1>
+    <p>Six proposed services make up our offering. Search or filter below, open <strong>View details</strong> for a quick summary, or <a class="text-link" href="enquiry.html">request a quote</a> for an instant indicative estimate. Images are AI-generated concept visuals prepared for this academic website.</p>
   </section>
 
+  <!-- ============ SEARCH / FILTER / SORT (js/script.js section 6) ============
+       The six services below are real HTML (good for search engines); JavaScript
+       only shows/hides and re-orders them. -->
+  <section aria-labelledby="finder-title">
+    <h2 id="finder-title" class="visually-hidden">Find a service</h2>
+    <div class="search-bar">
+      <div class="field"><label for="service-search">Search services</label><input type="search" id="service-search" placeholder="e.g. drone, bodyguard, alarm" autocomplete="off"></div>
+      <div class="field"><label for="service-sort">Sort by</label>
+        <select id="service-sort"><option value="featured">Featured</option><option value="az">Name A &ndash; Z</option><option value="za">Name Z &ndash; A</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select>
+      </div>
+    </div>
+    <div class="toolbar" role="group" aria-label="Filter by category">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-filter="protection" aria-pressed="false">Protection</button>
+      <button class="chip" type="button" data-filter="technology" aria-pressed="false">Technology</button>
+      <button class="chip" type="button" data-filter="transport" aria-pressed="false">Transport</button>
+      <button class="chip" type="button" data-filter="advisory" aria-pressed="false">Advisory</button>
+    </div>
+    <p id="service-count" class="list-status" aria-live="polite">Showing 6 of 6 services</p>
+    <div id="service-empty" class="empty-state" hidden>
+      <p>No services match your search.</p>
+      <button id="service-reset" class="btn btn-sm alt" type="button">Clear search and filters</button>
+    </div>
+  </section>
+
+  <section id="service-list" aria-label="Security services">
+    <article class="service-row" id="drone-surveillance" data-name="Drone Surveillance" data-category="technology" data-rate="4500" data-keywords="aerial drone cctv perimeter patrol overwatch estate event" data-reveal>
+      <div class="service-copy">
+        <h2>Drone Surveillance</h2>
+        <p>Aerial monitoring for sites, events and perimeter observation by licensed pilots, with live coverage for our operations desk.</p>
+        <div class="service-actions">
+          <button class="btn btn-sm alt" type="button" data-modal="drone-surveillance">View details</button>
+          <a class="btn btn-sm" href="enquiry.html?service=drone-surveillance#enquiry-form">Request a quote</a>
+        </div>
+      </div>
+      <img class="service-image" src="images/services/drone-surveillance.png" alt="AI-generated image of a surveillance drone flying over a property at dusk" width="95" height="100" loading="lazy">
+    </article>
+    <article class="service-row" id="secure-transport" data-name="Secure Transport" data-category="transport" data-rate="3200" data-keywords="armoured vehicle chauffeur driver airport transfer route" data-reveal>
+      <div class="service-copy">
+        <h2>Secure Transport</h2>
+        <p>Security-focused transport planning for clients who require safe and discreet travel arrangements, with trained protective drivers.</p>
+        <div class="service-actions">
+          <button class="btn btn-sm alt" type="button" data-modal="secure-transport">View details</button>
+          <a class="btn btn-sm" href="enquiry.html?service=secure-transport#enquiry-form">Request a quote</a>
+        </div>
+      </div>
+      <img class="service-image" src="images/services/secure-transport.png" alt="AI-generated image of a black armoured SUV used for secure VIP transport" width="95" height="100" loading="lazy">
+    </article>
+    <article class="service-row" id="vip-protection" data-name="VIP and Executive Protection" data-category="protection" data-rate="2800" data-keywords="bodyguard close protection celebrity executive personal security" data-reveal>
+      <div class="service-copy">
+        <h2>VIP &amp; Executive Protection</h2>
+        <p>Discreet personal security planning and protective support for high-profile and private clients at events, offices and on the move.</p>
+        <div class="service-actions">
+          <button class="btn btn-sm alt" type="button" data-modal="vip-protection">View details</button>
+          <a class="btn btn-sm" href="enquiry.html?service=vip-protection#enquiry-form">Request a quote</a>
+        </div>
+      </div>
+      <img class="service-image" src="images/services/vip-protection.png" alt="AI-generated image of a suited close-protection officer wearing sunglasses" width="95" height="100" loading="lazy">
+    </article>
+    <article class="service-row" id="armed-response" data-name="Armed Response" data-category="protection" data-rate="2200" data-keywords="armed response rapid dispatch incident alarm emergency" data-reveal>
+      <div class="service-copy">
+        <h2>Armed Response</h2>
+        <p>Rapid-response security support designed around responsible planning, licensed personnel and client safety.</p>
+        <div class="service-actions">
+          <button class="btn btn-sm alt" type="button" data-modal="armed-response">View details</button>
+          <a class="btn btn-sm" href="enquiry.html?service=armed-response#enquiry-form">Request a quote</a>
+        </div>
+      </div>
+      <img class="service-image" src="images/services/armed-response.png" alt="AI-generated image of two armed response officers on patrol" width="95" height="100" loading="lazy">
+    </article>
+    <article class="service-row" id="site-security" data-name="Site Security" data-category="protection" data-rate="1200" data-keywords="guard access control patrol cctv alarm home business venue" data-reveal>
+      <div class="service-copy">
+        <h2>Site Security</h2>
+        <p>Security planning and monitoring for homes, businesses, venues and controlled sites, from guarding to access control.</p>
+        <div class="service-actions">
+          <button class="btn btn-sm alt" type="button" data-modal="site-security">View details</button>
+          <a class="btn btn-sm" href="enquiry.html?service=site-security#enquiry-form">Request a quote</a>
+        </div>
+      </div>
+      <img class="service-image" src="images/services/site-security.png" alt="AI-generated image of a security control room operator watching camera screens" width="95" height="100" loading="lazy">
+    </article>
+    <article class="service-row" id="security-consulting" data-name="Security Consultation" data-category="advisory" data-rate="1500" data-keywords="risk assessment audit advice planning recommendations" data-reveal>
+      <div class="service-copy">
+        <h2>Security Consultation</h2>
+        <p>Basic risk identification and recommendations to help clients plan appropriate security measures before committing to services.</p>
+        <div class="service-actions">
+          <button class="btn btn-sm alt" type="button" data-modal="security-consulting">View details</button>
+          <a class="btn btn-sm" href="enquiry.html?service=security-consulting#enquiry-form">Request a quote</a>
+        </div>
+      </div>
+      <img class="service-image" src="images/services/security-consulting.png" alt="AI-generated image of a security consultant reviewing a site risk assessment" width="95" height="100" loading="lazy">
+    </article>
+  </section>
+
+  <!-- ============ FAQ ACCORDION (js/script.js section 3) ============ -->
+  <section class="panel" id="faq" data-reveal>
+    <div class="eyebrow">Questions</div>
+    <h2>Frequently asked questions</h2>
+    <div class="accordion">
+      <div class="accordion-item open">
+        <h3><button class="accordion-trigger" type="button" id="faq-1-btn" aria-expanded="true" aria-controls="faq-1-panel">Do I need a long-term contract?</button></h3>
+        <div class="accordion-panel" id="faq-1-panel" role="region" aria-labelledby="faq-1-btn"><div><p>No. Most services can be booked by the day for events, travel or short periods. Longer bookings of 7 days or more receive an automatic discount in your indicative estimate.</p></div></div>
+      </div>
+      <div class="accordion-item">
+        <h3><button class="accordion-trigger" type="button" id="faq-2-btn" aria-expanded="false" aria-controls="faq-2-panel">How quickly can you start?</button></h3>
+        <div class="accordion-panel" id="faq-2-panel" role="region" aria-labelledby="faq-2-btn"><div><p>Standard requests are usually scheduled within 3 to 5 business days. Priority and emergency requests are handled by our 24/7 operations desk with a faster target.</p></div></div>
+      </div>
+      <div class="accordion-item">
+        <h3><button class="accordion-trigger" type="button" id="faq-3-btn" aria-expanded="false" aria-controls="faq-3-panel">Are your drone pilots licensed?</button></h3>
+        <div class="accordion-panel" id="faq-3-panel" role="region" aria-labelledby="faq-3-btn"><div><p>Yes. Drone work is performed by licensed pilots using insured equipment, with respect for privacy and civil aviation rules.</p></div></div>
+      </div>
+      <div class="accordion-item">
+        <h3><button class="accordion-trigger" type="button" id="faq-4-btn" aria-expanded="false" aria-controls="faq-4-panel">Where do you operate?</button></h3>
+        <div class="accordion-panel" id="faq-4-panel" role="region" aria-labelledby="faq-4-btn"><div><p>Our proposed bases are Johannesburg, Pretoria and Durban, with travel arrangements available elsewhere. See our <a class="text-link" href="contact.html">offices and map</a>.</p></div></div>
+      </div>
+      <div class="accordion-item">
+        <h3><button class="accordion-trigger" type="button" id="faq-5-btn" aria-expanded="false" aria-controls="faq-5-panel">Will my information stay confidential?</button></h3>
+        <div class="accordion-panel" id="faq-5-panel" role="region" aria-labelledby="faq-5-btn"><div><p>Yes. Enquiries are treated as confidential and a non-disclosure agreement can be signed before sensitive details are shared.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICE MODAL: filled by js/script.js (section 5) when "View details" is pressed ============ -->
+  <div class="modal" id="service-modal" hidden>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" data-modal-close aria-label="Close service details">&times;</button>
+      <div class="eyebrow">Service details</div>
+      <h2 id="modal-title"></h2>
+      <p id="modal-summary"></p>
+      <ul id="modal-features"></ul>
+      <p><strong>Best for:</strong> <span id="modal-bestfor"></span></p>
+      <p class="modal-rate" id="modal-rate"></p>
+      <a class="btn btn-sm" id="modal-quote" href="enquiry.html">Request a quote</a>
+      <button class="btn btn-sm alt" type="button" data-modal-close>Close</button>
+    </div>
+  </div>
+  <section class="panel center" data-reveal>
+    <div class="eyebrow">Ready when you are</div>
+    <h2>Tell us what you need protected.</h2>
+    
+    <a class="btn" href="enquiry.html">Request a quote</a><a class="btn alt" href="contact.html">Contact us</a>
+  </section>
 </main>
 
-<!-- Site-wide footer — identical on every page -->
-<footer class="site-footer"><div class="footer-inner"><p>© 2026 Aesthetic Survillence · Founder: Trevor Makhubela · Protection • Discretion • Trust</p></div></footer>
+<!-- ================= SITE FOOTER =================
+     Footer links add extra internal linking between all pages (good for SEO). -->
+<footer class="site-footer"><div class="footer-inner">
+  <nav class="footer-nav" aria-label="Footer navigation">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="enquiry.html">Enquiry</a><a href="contact.html">Contact</a>
+  </nav>
+  <p>&copy; 2026 Aesthetic Surveillance &middot; Founder: Trevor Makhubela &middot; Protection &bull; Discretion &bull; Trust</p>
+</div></footer>
+
+<script src="js/script.js" defer></script>
 </body>
 </html>
