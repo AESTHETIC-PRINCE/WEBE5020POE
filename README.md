@@ -6,7 +6,7 @@
 | **Module** | WEDE5020 — Web Design and Development, Rosebank International (IIE) |
 | **Organisation (fictional)** | Aesthetic Surveillance — premium private security (founder: Trevor Makhubela) |
 | **Parts** | Part 1 HTML foundation · Part 2 CSS and responsive design · **Part 3 JavaScript, SEO and deployment** |
-| **Live site** | `https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/` *(add after deploying — see §7)* |
+
 
 ## 1. Project overview
 
