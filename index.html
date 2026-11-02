@@ -1,63 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aesthetic Survillence | Elite Security</title>
+
+  <!-- ===== SEO: title, description and keywords are unique on every page ===== -->
+  <title>Aesthetic Surveillance | Premium Private Security in SA</title>
+  <meta name="description" content="Premium private security in South Africa: close protection, drone surveillance, secure transport and armed response for executives and private clients.">
+  <meta name="keywords" content="private security South Africa, drone surveillance, VIP protection, executive protection Johannesburg, secure transport, armed response, site security, Aesthetic Surveillance">
+  <meta name="author" content="Trevor Makhubela">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/index.html">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Open Graph / Twitter: how the page looks when shared on social media -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aesthetic Surveillance">
+  <meta property="og:locale" content="en_ZA">
+  <meta property="og:title" content="Aesthetic Surveillance | Premium Private Security in SA">
+  <meta property="og:description" content="Premium private security in South Africa: close protection, drone surveillance, secure transport and armed response for executives and private clients.">
+  <meta property="og:url" content="https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/index.html">
+  <meta property="og:image" content="https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/images/og-aesthetic-surveillance-share.jpg">
+  <meta property="og:image:alt" content="Security officer, drone and armoured vehicle outside a luxury estate at night">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+
+  <!-- Mark the page as JS-enabled early so CSS can hide things JS will reveal (no flash) -->
+  <script>document.documentElement.className += ' js';</script>
+
+  <!-- Page speed: connect to the font host early, load fonts with display=swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Structured data (schema.org) helps search engines understand the business -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Aesthetic Surveillance",
+  "description": "Premium private security in South Africa: close protection, drone surveillance, secure transport, armed response and site security.",
+  "url": "https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/",
+  "logo": "https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/assets/logo.svg",
+  "image": "https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/images/og-aesthetic-surveillance-share.jpg",
+  "telephone": "+27 00 000 0000",
+  "email": "info@aestheticsurveillance.example",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sandton",
+    "addressRegion": "Gauteng",
+    "addressCountry": "ZA"
+  },
+  "areaServed": [
+    "Johannesburg",
+    "Pretoria",
+    "Durban"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Trevor Makhubela"
+  }
+}
+  </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- ================= SITE HEADER =================
-     Fixed/sticky header used identically on every page: logo (brand link
-     back to Home), then the main nav. aria-current="page" is set by hand
-     on whichever link matches the current page, and css/style.css styles
-     that attribute directly instead of relying on JavaScript. -->
+     Same on every page. The nav marks the current page with aria-current="page"
+     (styled in css/style.css). On phones the menu collapses behind the Menu
+     button, controlled by js/script.js (section 1). -->
 <header class="site-header">
   <div class="nav-wrap">
-    <a class="brand" href="index.html" aria-label="Aesthetic Survillence home"><img src="assets/logo.svg" alt="Aesthetic Survillence logo"></a>
-    <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="index.html" aria-label="Aesthetic Surveillance home"><img src="assets/logo.svg" alt="Aesthetic Surveillance logo" width="360" height="90"></a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false"><span class="nav-toggle-bars" aria-hidden="true"></span><span>Menu</span></button>
+    <nav class="nav" id="primary-nav" aria-label="Main navigation">
       <a href="index.html" aria-current="page">Home</a>
-      <a href="about.html" >About</a>
-      <a href="services.html" >Services</a>
-      <a href="enquiry.html" >Enquiry</a>
-      <a href="contact.html" >Contact</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="enquiry.html">Enquiry</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <!-- ================= HERO ==================
-       Two-column intro: left side is the value proposition + call-to-
-       action buttons + quick stats; right side is the hero photo.
-       Stacks to one column on tablet/mobile (see style.css §Responsive). -->
+  <!-- ================= HERO =================
+       Left: value proposition, calls-to-action, animated stats (counters run in
+       js/script.js section 2). Right: responsive hero photo (<picture> serves a
+       small WebP on phones, a larger one on desktop, JPG as fallback). -->
   <section class="hero">
     <div>
       <div class="eyebrow">Protecting what matters</div>
       <h1>Security <span class="gold">Redefined.</span></h1>
-      <p>Aesthetic Survillence is a proposed premium security business for private clients, businesses and high-profile individuals, combining trained personnel with modern surveillance technology.</p>
-      <a class="btn" href="services.html">Our Services →</a><a class="btn alt" href="enquiry.html">Request an Enquiry</a>
-      <!-- Quick trust stats — purely decorative/informational, no logic needed -->
+      <p>Aesthetic Surveillance is a proposed premium private security business in South Africa for private clients, businesses and high-profile individuals, combining trained personnel with <a class="text-link" href="services.html#drone-surveillance">drone surveillance</a> and <a class="text-link" href="services.html#secure-transport">secure transport</a>.</p>
+      <a class="btn" href="services.html">Our Services &rarr;</a><a class="btn alt" href="enquiry.html">Request an Enquiry</a>
       <div class="stats">
-        <div class="stat"><strong>24/7</strong>Protection</div><div class="stat"><strong>100+</strong>Target clients</div><div class="stat"><strong>50+</strong>Planned drone missions</div><div class="stat"><strong>5★</strong>Service aim</div>
+        <div class="stat"><strong>24/7</strong>Protection</div>
+        <div class="stat"><strong data-count="100" data-suffix="+">100+</strong>Target clients</div>
+        <div class="stat"><strong data-count="50" data-suffix="+">50+</strong>Planned drone missions</div>
+        <div class="stat"><strong>5&#9733;</strong>Service aim</div>
       </div>
     </div>
-    <div><img class="hero-image" src="images/hero-ai-generated.png" alt="AI-generated luxury security vehicle and surveillance drone"></div>
+    <div class="hero-image-wrap">
+      <picture>
+        <source type="image/webp" srcset="images/security-team-drone-luxury-estate-night-800.webp 800w, images/security-team-drone-luxury-estate-night-1600.webp 1600w" sizes="(max-width: 1024px) 100vw, 50vw">
+        <img class="hero-image" src="images/security-team-drone-luxury-estate-night-1600.jpg" alt="Armed security officer in a gold-crested vest watching a surveillance drone and an armoured SUV outside a luxury estate at night" width="1600" height="1067" fetchpriority="high">
+      </picture>
+    </div>
   </section>
 
-  <!-- ============ WHY CHOOSE US (.panel) ============
-       Reusable single-column content block — the same .panel class is
-       reused on about.html, services.html, enquiry.html and contact.html
-       for any full-width text section. -->
-  <section class="panel"><div class="eyebrow">Why choose us</div><h2>Professional. Discreet. Modern.</h2><p>Our project concept focuses on dependable security, polished presentation and clear communication. The website will use a simple luxury style that is easy for clients to understand and easy for a student developer to maintain.</p></section>
+  <!-- ============ WHY CHOOSE US (.panel) ============ -->
+  <section class="panel" data-reveal>
+    <div class="eyebrow">Why choose us</div>
+    <h2>Professional. Discreet. Modern.</h2>
+    <p>Our concept focuses on dependable security, polished presentation and clear communication. Read <a class="text-link" href="about.html">about our mission and approach</a>, browse the <a class="text-link" href="services.html">full list of services</a>, or <a class="text-link" href="enquiry.html">request a quote</a> and see an instant indicative estimate.</p>
+  </section>
 
+  <!-- ============ SERVICES OVERVIEW ============
+       Each card links to the matching section on services.html (internal linking). -->
+  <section aria-labelledby="overview-title">
+    <h2 id="overview-title" class="visually-hidden">Our security services</h2>
+    <div class="grid">
+    <article class="card" data-reveal><h3>Drone Surveillance</h3><p>Aerial monitoring for sites, events and perimeter observation by licensed pilots, with live coverage for our operations desk.</p><p><a class="text-link" href="services.html#drone-surveillance">Learn more about drone surveillance</a></p></article>
+    <article class="card" data-reveal><h3>Secure Transport</h3><p>Security-focused transport planning for clients who require safe and discreet travel arrangements, with trained protective drivers.</p><p><a class="text-link" href="services.html#secure-transport">Learn more about secure transport</a></p></article>
+    <article class="card" data-reveal><h3>VIP &amp; Executive Protection</h3><p>Discreet personal security planning and protective support for high-profile and private clients at events, offices and on the move.</p><p><a class="text-link" href="services.html#vip-protection">Learn more about vip and executive protection</a></p></article>
+    <article class="card" data-reveal><h3>Armed Response</h3><p>Rapid-response security support designed around responsible planning, licensed personnel and client safety.</p><p><a class="text-link" href="services.html#armed-response">Learn more about armed response</a></p></article>
+    <article class="card" data-reveal><h3>Site Security</h3><p>Security planning and monitoring for homes, businesses, venues and controlled sites, from guarding to access control.</p><p><a class="text-link" href="services.html#site-security">Learn more about site security</a></p></article>
+    <article class="card" data-reveal><h3>Security Consultation</h3><p>Basic risk identification and recommendations to help clients plan appropriate security measures before committing to services.</p><p><a class="text-link" href="services.html#security-consulting">Learn more about security consultation</a></p></article>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY + LIGHTBOX ============
+       Clicking a thumbnail opens the full image in an accessible lightbox
+       (js/script.js section 8). Works with keyboard, arrows and swipe. -->
+  <section class="panel" id="gallery">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Operations gallery</div>
+      <h2>See how we protect</h2>
+      <p>Select any image to view it larger. Images are AI-generated concept visuals created for this academic project.</p>
+    </div>
+    <ul class="gallery" data-reveal>
+      <li><a href="images/gallery/luxury-estate-security-detail-night.webp" data-lightbox data-caption="Estate security detail at night"><img src="images/gallery/luxury-estate-security-detail-night.webp" alt="Security detail guarding a luxury estate at night" width="1536" height="1024" loading="lazy"></a></li>
+      <li><a href="images/gallery/armed-response-officer-gold-vest.webp" data-lightbox data-caption="Armed response officer"><img src="images/gallery/armed-response-officer-gold-vest.webp" alt="Armed response officer in a black vest with a gold crest, seen from behind" width="656" height="904" loading="lazy"></a></li>
+      <li><a href="images/gallery/armoured-suv-secure-transport.webp" data-lightbox data-caption="Armoured SUV transport"><img src="images/gallery/armoured-suv-secure-transport.webp" alt="Black armoured SUV with headlights on outside an estate" width="640" height="380" loading="lazy"></a></li>
+      <li><a href="images/gallery/surveillance-drone-aerial-patrol.webp" data-lightbox data-caption="Drone aerial patrol"><img src="images/gallery/surveillance-drone-aerial-patrol.webp" alt="Surveillance drone with camera hovering under storm clouds" width="520" height="220" loading="lazy"></a></li>
+      <li><a href="images/gallery/estate-gate-perimeter-security.webp" data-lightbox data-caption="Perimeter and gate security"><img src="images/gallery/estate-gate-perimeter-security.webp" alt="Secured slatted gate and lit estate house with a guard on watch" width="600" height="550" loading="lazy"></a></li>
+      <li><a href="images/gallery/city-skyline-executive-protection.webp" data-lightbox data-caption="Executive protection in the city"><img src="images/gallery/city-skyline-executive-protection.webp" alt="City skyline at dusk behind a security vehicle" width="460" height="380" loading="lazy"></a></li>
+    </ul>
+  </section>
+
+  <!-- ============ DYNAMIC SECURITY INSIGHTS ============
+       The article cards are NOT written in this HTML: js/script.js (section 7)
+       builds them from a data array, with category filtering and a Load more button. -->
+  <section class="panel" id="insights">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Security insights</div>
+      <h2>Practical advice from our planners</h2>
+      <p>Sample articles written for this project. Filter by topic or load more.</p>
+    </div>
+    <div class="toolbar" role="group" aria-label="Filter articles by topic">
+      <button class="chip" type="button" data-insight-filter="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-insight-filter="Planning" aria-pressed="false">Planning</button>
+      <button class="chip" type="button" data-insight-filter="Technology" aria-pressed="false">Technology</button>
+      <button class="chip" type="button" data-insight-filter="Travel" aria-pressed="false">Travel</button>
+    </div>
+    <div id="insights-grid" class="insights" aria-live="polite"></div>
+    <noscript><p class="note">Turn on JavaScript to load our latest security insights.</p></noscript>
+    <p id="insights-status" class="list-status" aria-live="polite"></p>
+    <button id="insights-more" class="btn btn-sm" type="button">Load more articles</button>
+  </section>
+  <section class="panel center" data-reveal>
+    <div class="eyebrow">Get started</div>
+    <h2>Discretion begins with a conversation.</h2>
+    
+    <a class="btn" href="enquiry.html">Request a quote</a><a class="btn alt" href="contact.html">Contact us</a>
+  </section>
 </main>
 
 <!-- ================= SITE FOOTER =================
-     Same footer markup repeated on every page for a consistent brand
-     sign-off; update the year/founder text here and copy to the other
-     four pages if it ever changes. -->
-<footer class="site-footer"><div class="footer-inner"><p>© 2026 Aesthetic Survillence · Founder: Trevor Makhubela · Protection • Discretion • Trust</p></div></footer>
+     Footer links add extra internal linking between all pages (good for SEO). -->
+<footer class="site-footer"><div class="footer-inner">
+  <nav class="footer-nav" aria-label="Footer navigation">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="enquiry.html">Enquiry</a><a href="contact.html">Contact</a>
+  </nav>
+  <p>&copy; 2026 Aesthetic Surveillance &middot; Founder: Trevor Makhubela &middot; Protection &bull; Discretion &bull; Trust</p>
+</div></footer>
+
+<script src="js/script.js" defer></script>
 </body>
 </html>
