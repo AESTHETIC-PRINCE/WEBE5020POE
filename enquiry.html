@@ -1,46 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enquiry | Aesthetic Survillence</title>
+
+  <!-- ===== SEO: title, description and keywords are unique on every page ===== -->
+  <title>Request a Security Quote | Aesthetic Surveillance</title>
+  <meta name="description" content="Request a confidential security quote online and get an instant indicative estimate and availability for drone surveillance, VIP protection and more.">
+  <meta name="keywords" content="security quote South Africa, request security services, drone surveillance quote, VIP protection enquiry, armed response booking, security cost estimate">
+  <meta name="author" content="Trevor Makhubela">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/enquiry.html">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Open Graph / Twitter: how the page looks when shared on social media -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aesthetic Surveillance">
+  <meta property="og:locale" content="en_ZA">
+  <meta property="og:title" content="Request a Security Quote | Aesthetic Surveillance">
+  <meta property="og:description" content="Request a confidential security quote online and get an instant indicative estimate and availability for drone surveillance, VIP protection and more.">
+  <meta property="og:url" content="https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/enquiry.html">
+  <meta property="og:image" content="https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/images/og-aesthetic-surveillance-share.jpg">
+  <meta property="og:image:alt" content="Security officer, drone and armoured vehicle outside a luxury estate at night">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+
+  <!-- Mark the page as JS-enabled early so CSS can hide things JS will reveal (no flash) -->
+  <script>document.documentElement.className += ' js';</script>
+
+  <!-- Page speed: connect to the font host early, load fonts with display=swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- Site-wide header/nav — identical block on every page -->
+<!-- ================= SITE HEADER =================
+     Same on every page. The nav marks the current page with aria-current="page"
+     (styled in css/style.css). On phones the menu collapses behind the Menu
+     button, controlled by js/script.js (section 1). -->
 <header class="site-header">
   <div class="nav-wrap">
-    <a class="brand" href="index.html" aria-label="Aesthetic Survillence home"><img src="assets/logo.svg" alt="Aesthetic Survillence logo"></a>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" >Home</a>
-      <a href="about.html" >About</a>
-      <a href="services.html" >Services</a>
+    <a class="brand" href="index.html" aria-label="Aesthetic Surveillance home"><img src="assets/logo.svg" alt="Aesthetic Surveillance logo" width="360" height="90"></a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false"><span class="nav-toggle-bars" aria-hidden="true"></span><span>Menu</span></button>
+    <nav class="nav" id="primary-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
       <a href="enquiry.html" aria-current="page">Enquiry</a>
-      <a href="contact.html" >Contact</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <!-- Enquiry form: .form-grid lays fields out two-per-row (one column on
-       mobile). "name"/"email" carry the required attribute for basic
-       HTML5 validation; the form does not submit anywhere yet — action="#"
-       is a Part 1 placeholder, real submission logic is a Part 3 task. -->
-  <section class="panel"><div class="eyebrow">Enquiry</div><h2>Tell us what you need protected.</h2><p class="note">This is a Part 1 HTML form prototype; it is not connected to a live database.</p><form action="#" method="post" class="form-grid">
-    <div><label for="name">Full name</label><input type="text" id="name" name="name" required></div>
-    <div><label for="email">Email address</label><input type="email" id="email" name="email" required></div>
-    <div><label for="phone">Phone number</label><input type="tel" id="phone" name="phone"></div>
-    <div><label for="service">Service required</label><select id="service" name="service"><option>Drone surveillance</option><option>VIP / executive protection</option><option>Secure transport</option><option>Armed response</option><option>Site security</option><option>Security consultation</option></select></div>
-    <!-- .full spans both grid columns — used for the textarea and submit button -->
-    <div class="full"><label for="message">Enquiry details</label><textarea id="message" name="message"></textarea></div>
-    <div class="full"><button class="btn" type="submit">Submit Enquiry</button></div>
-  </form></section>
+  <section class="panel">
+    <div class="eyebrow">Enquiry</div>
+    <h1 class="page-title">Tell us what you need protected.</h1>
+    <p>Complete the form to receive an <strong>instant indicative estimate and availability</strong>. A planner will confirm the final quotation after a short risk call. Not sure what you need? Browse the <a class="text-link" href="services.html">services</a> first.</p>
+    <p class="note">Estimates use illustrative day-rates for this academic project and are not real quotations. Checks happen in your browser; nothing is sent to a server.</p>
 
+    <!-- ===== ENQUIRY FORM =====
+         novalidate = we show our own friendly messages (js/script.js section 10)
+         instead of the browser's default pop-ups. The HTML5 attributes
+         (required, type, min, max, minlength) are still the first line of defence. -->
+    <form id="enquiry-form" class="form-grid" novalidate>
+    <div class="field" data-field="fullName"><label for="fullName">Full name</label><input type="text" id="fullName" name="fullName" aria-describedby="fullName-error" autocomplete="name" required aria-required="true" maxlength="80"><span class="field-error" id="fullName-error" hidden></span></div>
+    <div class="field" data-field="email"><label for="email">Email address</label><input type="email" id="email" name="email" aria-describedby="email-error" autocomplete="email" required aria-required="true" maxlength="120"><span class="field-error" id="email-error" hidden></span></div>
+    <div class="field" data-field="phone"><label for="phone">Phone number</label><input type="tel" id="phone" name="phone" aria-describedby="phone-error" autocomplete="tel" inputmode="tel" placeholder="082 123 4567" required aria-required="true" maxlength="20"><span class="field-error" id="phone-error" hidden></span></div>
+    <div class="field" data-field="city"><label for="city">Where is the service needed?</label><select id="city" name="city" required aria-required="true" aria-describedby="city-error"><option value="" disabled selected>Select a location</option><option value="johannesburg">Johannesburg</option><option value="pretoria">Pretoria</option><option value="durban">Durban</option><option value="other">Other (tell us below)</option></select><span class="field-error" id="city-error" hidden></span></div>
+    <div class="field full" data-field="service"><label for="service">Service required</label><select id="service" name="service" required aria-required="true" aria-describedby="service-error"><option value="" disabled selected>Select a service</option><option value="drone-surveillance">Drone Surveillance</option><option value="secure-transport">Secure Transport</option><option value="vip-protection">VIP & Executive Protection</option><option value="armed-response">Armed Response</option><option value="site-security">Site Security</option><option value="security-consulting">Security Consultation</option></select><span class="field-error" id="service-error" hidden></span></div>
+    <fieldset class="field full" data-field="urgency"><legend class="field-label">How soon do you need us?</legend>
+      <div class="choice-group">
+        <label class="choice"><input type="radio" name="urgency" value="standard" required> Standard <small>(5+ days)</small></label>
+        <label class="choice"><input type="radio" name="urgency" value="priority"> Priority <small>(48 hours)</small></label>
+        <label class="choice"><input type="radio" name="urgency" value="emergency"> Emergency <small>(24 hours)</small></label>
+      </div><span class="field-error" id="urgency-error" hidden></span></fieldset>
+    <div class="field" data-field="startDate"><label for="startDate">Preferred start date</label><input type="date" id="startDate" name="startDate" aria-describedby="startDate-error" required aria-required="true"><span class="field-error" id="startDate-error" hidden></span></div>
+    <div class="field" data-field="days"><label for="days">Number of days (1&ndash;30)</label><input type="number" id="days" name="days" aria-describedby="days-error" min="1" max="30" step="1" inputmode="numeric" value="1" required aria-required="true"><span class="field-error" id="days-error" hidden></span></div>
+    <div class="field full" data-field="units"><label for="units">How many officers / vehicles / drones? (1&ndash;10)</label><input type="number" id="units" name="units" aria-describedby="units-error" min="1" max="10" step="1" inputmode="numeric" value="1" required aria-required="true"><span class="field-error" id="units-error" hidden></span></div>
+    <div class="field full" data-field="details"><label for="details">Tell us about your requirement</label><textarea id="details" name="details" rows="5" minlength="20" maxlength="1000" required aria-required="true" aria-describedby="details-error" placeholder="Event or site type, number of guests, known risks, access details&hellip;"></textarea><span class="char-count" data-counter-for="details"></span><span class="field-error" id="details-error" hidden></span></div>
+    <div class="field full" data-field="consent"><label class="check"><input type="checkbox" id="consent" name="consent" required aria-required="true" aria-describedby="consent-error"><span>I agree that Aesthetic Surveillance may contact me about this enquiry. My details are treated as confidential.</span></label><span class="field-error" id="consent-error" hidden></span></div>
+    <div class="hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+    <div class="full"><button class="btn" type="submit">Get my indicative estimate</button><p class="form-status" role="status" aria-live="polite"></p></div>
+    </form>
+
+    <!-- Result panel: filled by JavaScript after the form passes validation -->
+    <section id="enquiry-result" class="result" aria-live="polite" hidden></section>
+  </section>
+  <section class="panel center" data-reveal>
+    <div class="eyebrow">Prefer to talk?</div>
+    <h2>Call or message the operations desk.</h2>
+    
+    <a class="btn" href="enquiry.html">Request a quote</a><a class="btn alt" href="contact.html">Contact us</a>
+  </section>
 </main>
 
-<!-- Site-wide footer — identical on every page -->
-<footer class="site-footer"><div class="footer-inner"><p>© 2026 Aesthetic Survillence · Founder: Trevor Makhubela · Protection • Discretion • Trust</p></div></footer>
+<!-- ================= SITE FOOTER =================
+     Footer links add extra internal linking between all pages (good for SEO). -->
+<footer class="site-footer"><div class="footer-inner">
+  <nav class="footer-nav" aria-label="Footer navigation">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="enquiry.html">Enquiry</a><a href="contact.html">Contact</a>
+  </nav>
+  <p>&copy; 2026 Aesthetic Surveillance &middot; Founder: Trevor Makhubela &middot; Protection &bull; Discretion &bull; Trust</p>
+</div></footer>
+
+<script src="js/script.js" defer></script>
 </body>
 </html>
