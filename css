@@ -11,7 +11,6 @@
              (eyebrow labels — mono/tactical, fits a surveillance brand)
    ========================================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap');
 
 :root {
   --obsidian: #0a0a0a;
@@ -303,26 +302,6 @@ main > .hero + .panel { border-top: none; }
 .card h3 { color: var(--gold-pale); }
 .card p { font-size: 0.93rem; }
 
-/* ============================== MAP EMBED =================================
-   Google Maps iframe, styled to sit inside the black/gold theme instead of
-   looking like a stock Google widget: desaturated + inverted so it reads
-   as monochrome, then sharpens slightly on hover/focus. */
-.map-embed {
-  width: 100%;
-  height: 22rem;
-  border: 1px solid var(--line);
-  filter: grayscale(1) invert(0.92) contrast(0.9);
-  transition: filter 0.6s var(--ease);
-}
-.map-embed:hover,
-.map-embed:focus { filter: grayscale(0.35) invert(0.9) contrast(1); }
-
-/* Smaller map dropped inside a .card (one per location) */
-.map-embed--small {
-  height: 11rem;
-  margin-top: 1.1rem;
-}
-
 /* =========================== 8. SERVICES (service-row) ======================= */
 .service-row {
   display: flex;
@@ -335,11 +314,13 @@ main > .hero + .panel { border-top: none; }
   padding-left: clamp(1.25rem, 5vw, 3.5rem);
   padding-right: clamp(1.25rem, 5vw, 3.5rem);
 }
-/* Alternate the image side left/right down the list for visual rhythm */
-.service-row:nth-child(even) { flex-direction: row-reverse; }
+/* Alternate image side. Without JS: CSS nth-child. With JS: .is-flipped is
+   set on the visible rows so filtering/sorting keeps the zig-zag correct. */
+html:not(.js) .service-row:nth-child(even),
+.service-row.is-flipped { flex-direction: row-reverse; }
 .service-copy { flex: 1; }
-.service-copy h3 { color: var(--bone); }
-.service-copy h3::before {
+.service-copy h2, .service-copy h3 { color: var(--bone); font-size: var(--h3); }
+.service-copy h2::before {
   content: "";
   display: inline-block;
   width: 0.4rem; height: 0.4rem;
@@ -423,6 +404,10 @@ main > .hero + .panel { border-top: none; }
 
 /* ------------------------------ TABLET (≤1024px) --------------------------- */
 @media (max-width: 1024px) {
+  /* Navigation (tablet): tighter spacing so all five links stay on one line beside the logo */
+  .nav { gap: 1.2rem; }
+  .nav a { font-size: 0.68rem; letter-spacing: 0.1em; }
+  .brand img { height: 1.9rem; }
   .grid { grid-template-columns: repeat(2, 1fr); }
   .hero { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 3.5rem; }
   .hero > div:last-child { order: -1; }
@@ -432,8 +417,13 @@ main > .hero + .panel { border-top: none; }
 
 /* ------------------------------ MOBILE (≤700px) ----------------------------- */
 @media (max-width: 700px) {
-  .nav-wrap { flex-direction: column; align-items: flex-start; gap: 0.9rem; padding-bottom: 1rem; }
-  .nav { gap: 1.25rem; flex-wrap: wrap; }
+  .nav-wrap { gap: 0.9rem; padding-bottom: 1rem; }
+  .nav { gap: 1.25rem; flex-wrap: wrap; width: 100%; }
+  /* JS present: collapse the menu behind the hamburger button */
+  .js .nav-toggle { display: inline-flex; }
+  .js .nav { display: none; flex-direction: column; gap: 0; width: 100%; border-top: 1px solid var(--line); }
+  .js .nav.open { display: flex; }
+  .js .nav a { padding: 0.9rem 0; border-bottom: 1px solid var(--line); font-size: 0.8rem; }
 
   h1 { font-size: clamp(2rem, 9vw, 2.6rem); }
   h2 { font-size: clamp(1.6rem, 7vw, 2rem); }
@@ -442,7 +432,8 @@ main > .hero + .panel { border-top: none; }
   .panel { padding: 2.75rem 0; }
 
   .service-row,
-  .service-row:nth-child(even) {
+  html:not(.js) .service-row:nth-child(even),
+  .service-row.is-flipped {
     flex-direction: column;
     align-items: stretch;
     gap: 1.5rem;
@@ -454,13 +445,292 @@ main > .hero + .panel { border-top: none; }
 
   .stats { gap: 1.5rem; }
   .btn { width: 100%; justify-content: center; margin: 0.3rem 0; }
+  .btn-sm { width: auto; }
 
-  .map-embed { height: 16rem; }
-  .map-embed--small { height: 9rem; }
+  #map { height: 20rem; }
 }
 
 /* --------------------------- SMALL MOBILE (≤420px) -------------------------- */
 @media (max-width: 420px) {
   .hero { padding: 2.5rem 0 2rem; }
   .card, .service-copy, .panel { padding-left: 0; padding-right: 0; }
+}
+
+/* =========================================================================
+   PART 3 — INTERACTIVE COMPONENTS + ACCESSIBILITY
+   Everything below supports js/script.js. Styles that depend on JavaScript
+   are scoped under `.js` (set in each page <head>) so the site still reads
+   correctly if scripts fail to load.
+   ========================================================================= */
+
+[hidden] { display: none !important; }              /* so JS can use the hidden attribute on flex/grid items */
+html.no-scroll { overflow: hidden; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip-link {
+  position: absolute; left: 1rem; top: -4rem; z-index: 300;
+  background: var(--gold); color: var(--obsidian);
+  padding: 0.7rem 1.1rem; font-family: var(--mono); font-size: 0.75rem;
+  transition: top 0.2s var(--ease);
+}
+.skip-link:focus { top: 1rem; }
+
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--gold-pale); outline-offset: 3px;
+}
+
+/* One <h1> per page, sized like a section heading on inner pages */
+h1.page-title { font-size: var(--h2); line-height: 1.15; margin-bottom: 1rem; }
+.section-head { margin-bottom: 2rem; }
+.section-head p { max-width: 42rem; }
+.text-link { color: var(--gold-pale); border-bottom: 1px solid var(--line); transition: color 0.3s var(--ease), border-color 0.3s var(--ease); }
+.text-link:hover { color: var(--gold); border-color: var(--gold); }
+.btn-sm { padding: 0.65rem 1.2rem; font-size: 0.68rem; }
+
+/* ------------------------ Hamburger button (mobile) ------------------------ */
+.nav-toggle {
+  display: none;
+  align-items: center; justify-content: center; gap: 0.5rem;
+  background: transparent; border: 1px solid var(--line); color: var(--bone);
+  padding: 0.55rem 0.9rem; cursor: pointer;
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+.nav-toggle:hover { border-color: var(--gold); color: var(--gold); }
+.nav-toggle-bars, .nav-toggle-bars::before, .nav-toggle-bars::after {
+  display: block; width: 1.1rem; height: 1px; background: currentColor;
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+.nav-toggle-bars { position: relative; }
+.nav-toggle-bars::before, .nav-toggle-bars::after { content: ""; position: absolute; left: 0; }
+.nav-toggle-bars::before { top: -5px; }
+.nav-toggle-bars::after  { top: 5px; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars::before { top: 0; transform: rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars::after  { top: 0; transform: rotate(-45deg); }
+
+/* ------------------------------ Scroll reveal ------------------------------ */
+.js [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+.js [data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* ------------------------------- Home sections ----------------------------- */
+.hero-image-wrap { display: block; }
+.hero-image-wrap picture { display: block; }
+
+/* Gallery (thumbnails open the lightbox) */
+.gallery {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;
+  list-style: none; margin-top: 1.5rem;
+}
+.gallery a {
+  position: relative; display: block; overflow: hidden; aspect-ratio: 4/3;
+  border: 1px solid var(--line); background: var(--onyx);
+}
+.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease), filter 0.5s var(--ease); }
+.gallery a::after {
+  content: attr(data-caption); position: absolute; inset: auto 0 0 0;
+  padding: 1.6rem 1rem 0.8rem; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--bone); background: linear-gradient(0deg, rgba(10,10,10,0.9), transparent);
+  transform: translateY(100%); transition: transform 0.4s var(--ease);
+}
+.gallery a:hover img, .gallery a:focus-visible img { transform: scale(1.07); }
+.gallery a:hover::after, .gallery a:focus-visible::after { transform: translateY(0); }
+
+/* Dynamic insights */
+.toolbar { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin: 1.5rem 0; }
+.chip {
+  background: transparent; color: var(--bone-dim); border: 1px solid var(--line);
+  padding: 0.5rem 1rem; cursor: pointer;
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.chip:hover { border-color: var(--gold); color: var(--gold); }
+.chip[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--obsidian); }
+.insights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); }
+.insight { background: var(--onyx); padding: 1.9rem 1.7rem; transition: background 0.4s var(--ease); }
+.insight:hover { background: var(--onyx-light); }
+.insight h3 { font-size: 1.25rem; margin: 0.7rem 0; }
+.insight p { font-size: 0.9rem; }
+.insight .meta { margin-top: 1rem; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.06em; color: var(--steel); }
+.tag { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+.list-status { font-family: var(--mono); font-size: 0.7rem; color: var(--steel); margin: 1.2rem 0 0.8rem; }
+.center { text-align: center; }
+
+/* ----------------------------- Services toolbar ---------------------------- */
+.search-bar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; margin-bottom: 1rem; }
+.search-bar .field { flex: 1 1 16rem; margin: 0; }
+.search-bar label, .field-label {
+  display: block; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--steel); margin-bottom: 0.5rem;
+}
+.search-bar input, .search-bar select {
+  width: 100%; background: var(--onyx); border: 1px solid var(--line); color: var(--bone);
+  padding: 0.8rem 1rem; font: inherit; font-size: 0.95rem;
+  transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.search-bar input:focus, .search-bar select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,162,39,0.15); }
+.empty-state { border: 1px dashed var(--line); padding: 2rem; text-align: center; margin: 2rem 0; }
+.service-actions { margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.service-image { flex: 0 1 20rem; max-width: 20rem; aspect-ratio: 19 / 20; margin-left: auto; margin-right: auto; }
+
+/* -------------------------------- Accordion -------------------------------- */
+.accordion { border-top: 1px solid var(--line); margin-top: 1.5rem; }
+.accordion-item { border-bottom: 1px solid var(--line); }
+.accordion-item h3 { margin: 0; font-size: 1rem; }
+.accordion-trigger {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  background: none; border: 0; color: var(--bone); text-align: left; cursor: pointer;
+  padding: 1.3rem 0; font-family: var(--serif); font-size: 1.3rem;
+  transition: color 0.3s var(--ease);
+}
+.accordion-trigger:hover { color: var(--gold-pale); }
+.accordion-trigger::after {
+  content: "+"; font-family: var(--mono); color: var(--gold); font-size: 1.3rem;
+  transition: transform 0.35s var(--ease);
+}
+.accordion-trigger[aria-expanded="true"]::after { transform: rotate(45deg); }
+.accordion-panel { display: grid; grid-template-rows: 1fr; transition: grid-template-rows 0.4s var(--ease), visibility 0.4s; }
+.accordion-panel > div { overflow: hidden; }
+.accordion-panel p { padding-bottom: 1.4rem; max-width: 46rem; }
+.js .accordion-item:not(.open) .accordion-panel { grid-template-rows: 0fr; visibility: hidden; }
+
+/* ----------------------------------- Tabs ---------------------------------- */
+.tabs { margin-top: 1.5rem; }
+.tablist { display: flex; flex-wrap: wrap; gap: 2px; background: var(--line); }
+.tab {
+  flex: 1 1 8rem; background: var(--onyx); border: 0; color: var(--bone-dim); cursor: pointer;
+  padding: 1rem 1.2rem; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+.tab:hover { color: var(--gold); }
+.tab[aria-selected="true"] { background: var(--gold); color: var(--obsidian); }
+.tab-panel { background: var(--onyx); padding: 2rem 1.8rem; border: 1px solid var(--line); border-top: 0; animation: riseIn 0.5s var(--ease) both; }
+.tab-panel h3 { margin-bottom: 0.6rem; }
+.js .tab-panel[hidden] { display: none !important; }
+
+/* ----------------------------- Service modal ------------------------------- */
+.modal, .lightbox {
+  position: fixed; inset: 0; z-index: 400; display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.82); backdrop-filter: blur(6px);
+  opacity: 0; transition: opacity 0.25s var(--ease); padding: 1rem;
+}
+.modal.is-open, .lightbox.is-open { opacity: 1; }
+.modal-dialog {
+  position: relative; width: min(38rem, 100%); max-height: 90vh; overflow-y: auto;
+  background: var(--onyx); border: 1px solid var(--gold); padding: 2.2rem 2rem;
+  transform: translateY(16px) scale(0.98); transition: transform 0.3s var(--ease);
+  box-shadow: 0 2rem 4rem rgba(0,0,0,0.6);
+}
+.modal.is-open .modal-dialog { transform: none; }
+.modal-close {
+  position: absolute; top: 0.8rem; right: 0.8rem; background: none; border: 1px solid var(--line);
+  color: var(--bone); width: 2.4rem; height: 2.4rem; font-size: 1.4rem; line-height: 1; cursor: pointer;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+.modal-close:hover { border-color: var(--gold); color: var(--gold); }
+.modal-dialog ul { margin: 1rem 0; padding-left: 1.2rem; list-style: disc; }
+.modal-dialog li { margin-bottom: 0.4rem; color: var(--bone-dim); }
+.modal-dialog li::marker { color: var(--gold); }
+.modal-rate { font-family: var(--mono); font-size: 0.75rem; color: var(--gold-pale); margin: 1rem 0 1.4rem; }
+
+/* -------------------------------- Lightbox --------------------------------- */
+.lightbox { background: rgba(0,0,0,0.94); flex-direction: column; }
+.lightbox figure { max-width: min(92vw, 70rem); text-align: center; }
+.lightbox img {
+  max-width: 100%; max-height: 74vh; margin: 0 auto; border: 1px solid var(--line);
+  opacity: 0; transform: scale(0.98); transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.lightbox img.loaded { opacity: 1; transform: none; }
+.lightbox figcaption { margin-top: 1rem; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; color: var(--bone-dim); }
+.lightbox-count { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: 0.7rem; color: var(--steel); }
+.lightbox-btn {
+  position: absolute; background: rgba(20,20,18,0.8); border: 1px solid var(--line); color: var(--bone);
+  width: 3rem; height: 3rem; font-size: 1.8rem; line-height: 1; cursor: pointer;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+.lightbox-btn:hover { border-color: var(--gold); color: var(--gold); }
+.lightbox-close { top: 1rem; right: 1rem; }
+.lightbox-prev { left: 1rem; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 1rem; top: 50%; transform: translateY(-50%); }
+
+/* ----------------------------- Interactive map ----------------------------- */
+#map { width: 100%; height: 26rem; border: 1px solid var(--line); background: var(--onyx); z-index: 1; }
+#map .leaflet-tile-pane { filter: grayscale(1) invert(1) brightness(0.8) contrast(0.95); }   /* dark, on-brand map tiles */
+.map-fallback { display: flex; align-items: center; justify-content: center; padding: 2rem; text-align: center; }
+.map-pin span {
+  display: block; width: 30px; height: 30px; background: var(--gold); border: 2px solid var(--obsidian);
+  border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 0.4rem 0.8rem rgba(0,0,0,0.5);
+}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--onyx); color: var(--bone); border-radius: 0; }
+.leaflet-popup-content { font-family: var(--sans); font-size: 0.9rem; line-height: 1.5; }
+.leaflet-container a { color: var(--gold-pale); }
+.map-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.offices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); margin-top: 1.5rem; }
+.offices .card p { margin-bottom: 1rem; }
+
+/* --------------------------- Forms (Part 3 additions) ---------------------- */
+.form-grid input[type="radio"], .form-grid input[type="checkbox"] { width: auto; accent-color: var(--gold); }
+.form-grid fieldset { border: 0; padding: 0; min-width: 0; }
+.form-grid legend { padding: 0; }
+.choice-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+.choice {
+  display: flex; align-items: center; gap: 0.6rem; padding: 0.8rem 1rem; cursor: pointer;
+  background: var(--onyx); border: 1px solid var(--line); color: var(--bone-dim); font-size: 0.9rem;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.choice:hover, .choice:has(input:checked) { border-color: var(--gold); background: var(--onyx-light); color: var(--bone); }
+.form-grid .choice { display: flex; margin: 0; text-transform: none; letter-spacing: 0; font-family: var(--sans); font-size: 0.9rem; color: inherit; }
+.form-grid .check { display: flex; gap: 0.7rem; align-items: flex-start; text-transform: none; letter-spacing: 0; font-family: var(--sans); font-size: 0.9rem; color: var(--bone-dim); }
+.field-error { display: block; margin-top: 0.45rem; font-family: var(--mono); font-size: 0.68rem; color: #e49a93; }
+.has-error input:not([type="radio"]):not([type="checkbox"]), .has-error select, .has-error textarea { border-color: #c1665e; }
+.has-error .choice-group, .has-error .check { outline: 1px solid #c1665e; outline-offset: 3px; }
+.char-count { display: block; text-align: right; font-family: var(--mono); font-size: 0.66rem; color: var(--steel); margin-top: 0.35rem; }
+.form-status { font-family: var(--mono); font-size: 0.78rem; margin-top: 0.8rem; min-height: 1.2rem; }
+.form-status.is-error { color: #e49a93; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }   /* honeypot (bots only) */
+.field-hint { font-size: 0.8rem; color: var(--steel); margin-top: 0.4rem; }
+
+.result {
+  border: 1px solid var(--gold); background: var(--onyx); padding: 2rem 1.8rem; margin-top: 1rem;
+  animation: riseIn 0.6s var(--ease) both;
+}
+.result h2 { font-size: var(--h3); margin-bottom: 0.4rem; }
+.result h3 { font-size: 1.1rem; margin: 1.6rem 0 0.6rem; color: var(--gold-pale); }
+.result .ref { font-family: var(--mono); font-size: 0.78rem; color: var(--gold); letter-spacing: 0.08em; }
+.summary { display: grid; grid-template-columns: minmax(9rem, 14rem) 1fr; gap: 0.5rem 1.2rem; font-size: 0.93rem; }
+.summary dt { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); padding-top: 0.15rem; }
+.summary dd { color: var(--bone); }
+.summary dd.pre { white-space: pre-wrap; word-break: break-word; }
+.result-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; }
+
+/* --------------------------------- Footer nav ------------------------------ */
+.footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 1.6rem; margin-bottom: 1.2rem; }
+.footer-nav a { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bone-dim); transition: color 0.3s var(--ease); }
+.footer-nav a:hover { color: var(--gold); }
+
+/* ---------------------- Part 3 responsive adjustments ---------------------- */
+@media (max-width: 1024px) {
+  .insights, .offices { grid-template-columns: repeat(2, 1fr); }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  .insights, .offices, .gallery, .choice-group { grid-template-columns: 1fr; }
+  .summary { grid-template-columns: 1fr; gap: 0.1rem; }
+  .summary dd { margin-bottom: 0.7rem; }
+  .modal-dialog { padding: 2rem 1.3rem; }
+  .lightbox-prev { left: 0.4rem; } .lightbox-next { right: 0.4rem; }
+  .service-image { max-width: 16rem; flex: none; }
+  .toolbar .chip { flex: 1 1 auto; }
+}
+
+/* ------------------------------- Print styles ------------------------------ */
+@media print {
+  .site-header, .site-footer, .skip-link, .result-actions, .nav-toggle { display: none !important; }
+  body { background: #fff; color: #000; }
+  .result { border-color: #000; background: #fff; }
+  .result *, .result h2, .result h3 { color: #000 !important; }
 }
